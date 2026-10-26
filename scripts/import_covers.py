@@ -13,6 +13,15 @@ OUT.mkdir(exist_ok=True)
 html = PAGE.read_text(encoding="utf-8")
 pattern = re.compile(r'(<article class="book">.*?<div class="cover"[^>]*>)(.*?)(</div>.*?<h3>(.*?)</h3>.*?<a class="button" href="([^"]+)")', re.S)
 matches = list(pattern.finditer(html))
+# Alternative product pages for publishers that block automated access.
+FALLBACKS = {
+  16: ["https://academicabooks.bg/product/%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%D1%82%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%82%D0%B0/", "https://bulpedagogika.com/book-3229-tehnikata-na-psihoanalizata"],
+  18: ["https://cpss.cloudcart.net/"],
+  19: ["https://cpss.cloudcart.net/"],
+  21: ["https://stenobooks.com/product/5932/poslednite-lektsii-1958-k-g-yung.html"],
+  22: ["https://www.ozone.bg/product/bremennata-devitsa/", "https://www.bookpoint.bg/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D0%91%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%82%D0%B0-%D0%B4%D0%B5%D0%B2%D0%B8%D1%86%D0%B0-155374.htm"],
+  26: ["https://kx-publishing.org/shop/%d0%b0%d0%bd%d1%82%d0%b8-%d0%b5%d0%b4%d0%b8%d0%bf/"],
+}
 session = requests.Session()
 session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; BooksNewsletter/1.0)"})
 report = []
@@ -61,6 +70,35 @@ for i, match in enumerate(matches, 1):
                 except Exception: continue
         except Exception as ex:
             state = "unavailable: " + str(ex)[:90]
+        if not path.exists():
+            for fallback in FALLBACKS.get(i, []):
+                try:
+                    res = session.get(fallback, timeout=22)
+                    res.raise_for_status()
+                    page = BeautifulSoup(res.text, "html.parser")
+                    images = []
+                    for meta in page.select('meta[property="og:image"], meta[name="twitter:image"]'):
+                        if meta.get("content"): images.append(meta["content"])
+                    for img in page.find_all("img", limit=100):
+                        alt = (img.get("alt") or "").lower()
+                        if i in (18,19) and not any(q in alt for q in (["особени майчинства"] if i==18 else ["какво иска жената"])): continue
+                        if img.get("data-src"): images.append(img["data-src"])
+                        if img.get("src"): images.append(img["src"])
+                    for url in dict.fromkeys(images):
+                        try:
+                            pic = session.get(urljoin(res.url, url), timeout=18, headers={"Referer": res.url})
+                            pic.raise_for_status()
+                            from PIL import Image
+                            from io import BytesIO
+                            im = Image.open(BytesIO(pic.content)).convert("RGB")
+                            if im.width < 110 or im.height < 150 or im.width > im.height * 1.35: continue
+                            im.thumbnail((600,900))
+                            im.save(path, "JPEG", quality=87, optimize=True)
+                            state = "downloaded via fallback"
+                            break
+                        except Exception: continue
+                    if path.exists(): break
+                except Exception: continue
     if path.exists():
         new_inner = f'<img src="images/book-{i:02d}.jpg" alt="Корица на {title}" loading="lazy" decoding="async">'
         replacements.append((match.start(2), match.end(2), new_inner))

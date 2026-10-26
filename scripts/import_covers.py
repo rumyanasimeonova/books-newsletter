@@ -16,11 +16,12 @@ matches = list(pattern.finditer(html))
 # Alternative product pages for publishers that block automated access.
 FALLBACKS = {
   16: ["https://academicabooks.bg/product/%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%D1%82%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%82%D0%B0/", "https://bulpedagogika.com/book-3229-tehnikata-na-psihoanalizata"],
-  18: ["https://cpss.cloudcart.net/"],
-  19: ["https://cpss.cloudcart.net/"],
+  18: ["https://espacepsy-bg.org/library/"],
+  19: ["https://espacepsy-bg.org/events/presentation-of-a-collection-of-works-by-claude-noele-pickmann/"],
   21: ["https://stenobooks.com/product/5932/poslednite-lektsii-1958-k-g-yung.html"],
   22: ["https://www.ozone.bg/product/bremennata-devitsa/", "https://www.bookpoint.bg/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D0%91%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%82%D0%B0-%D0%B4%D0%B5%D0%B2%D0%B8%D1%86%D0%B0-155374.htm"],
   26: ["https://kx-publishing.org/shop/%d0%b0%d0%bd%d1%82%d0%b8-%d0%b5%d0%b4%d0%b8%d0%bf/"],
+  28: ["https://potayniche.merchsolution.net/shop/%D0%BF%D1%80%D0%BE%D0%B1%D0%B8%D1%82%D0%B8%D1%82%D0%B5-%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B8-%D0%B2-%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D0%B8%D1%8F%D1%82%D0%B0-%D0%BD%D0%B0-%D0%B3%D1%80%D0%B0%D0%BD/", "https://www.book.store.bg/p230450/probitite-granici-v-terapiata-na-granichnostta-i-borderlajn-petyr-kralev.html"],
 }
 session = requests.Session()
 session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; BooksNewsletter/1.0)"})
@@ -79,11 +80,12 @@ for position, match in enumerate(matches, 1):
                     res.raise_for_status()
                     page = BeautifulSoup(res.text, "html.parser")
                     images = []
-                    for meta in page.select('meta[property="og:image"], meta[name="twitter:image"]'):
-                        if meta.get("content"): images.append(meta["content"])
+                    if i not in (18,19):
+                        for meta in page.select('meta[property="og:image"], meta[name="twitter:image"]'):
+                            if meta.get("content"): images.append(meta["content"])
                     for img in page.find_all("img", limit=100):
                         alt = (img.get("alt") or "").lower()
-                        if i in (18,19) and not any(q in alt for q in (["особени майчинства"] if i==18 else ["какво иска жената"])): continue
+                        if i in (18,19) and not any(q in alt for q in (["особени майчинства"] if i==18 else ["какво иска жената", "пикман"])): continue
                         if img.get("data-src"): images.append(img["data-src"])
                         if img.get("src"): images.append(img["src"])
                     for url in dict.fromkeys(images):

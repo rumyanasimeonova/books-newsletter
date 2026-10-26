@@ -26,7 +26,10 @@ session = requests.Session()
 session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; BooksNewsletter/1.0)"})
 report = []
 replacements = []
-for i, match in enumerate(matches, 1):
+for position, match in enumerate(matches, 1):
+    # The two additions to section 2 are placed after the original 26 books.
+    # Preserve existing image numbering for all earlier titles.
+    i = 27 if position == 20 else 28 if position == 21 else (position if position <= 19 else position - 2)
     prefix, inner, suffix, title, link = match.groups()
     path = OUT / f"book-{i:02d}.jpg"
     state = "existing" if path.exists() else "missing"

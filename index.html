@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f5ee">
+<title>The Reading List — Issue 01</title>
+<meta name="description" content="A curated selection of books to explore.">
+<style>
+:root{--paper:#f8f5ee;--ink:#252c29;--muted:#68716c;--accent:#7d443a;--line:#ded9cd;--card:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.65}
+.wrap{max-width:920px;margin:auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);padding:24px 0;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.brand{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:bold}
+.issue{font:12px Arial,sans-serif;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.hero{padding:78px 0 52px;text-align:center}
+.eyebrow{font:12px Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--accent)}
+h1{font-size:clamp(45px,8vw,83px);font-weight:normal;letter-spacing:-.05em;line-height:1.05;margin:18px 0}
+.intro{max-width:550px;margin:auto;color:var(--muted);font-size:18px}
+.section-heading{font:12px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.book{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:45px 0;border-bottom:1px solid var(--line);align-items:start}
+.cover{width:100%;aspect-ratio:2/3;background:#ded9cd;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;color:#5f625a;font-style:italic;box-shadow:7px 9px 0 #e9e3d8}
+.number{font:12px Arial,sans-serif;color:var(--accent);letter-spacing:.18em}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.15;font-weight:normal;letter-spacing:-.025em;margin:14px 0 6px}
+.author{font-style:italic;color:var(--muted);margin:0 0 18px}
+.summary{font-size:17px;margin-bottom:25px}
+.button{display:inline-block;border:1px solid var(--accent);color:var(--accent);text-decoration:none;padding:10px 20px;font:13px Arial,sans-serif;letter-spacing:.03em}
+.button:hover{background:var(--accent);color:white}
+footer{text-align:center;color:var(--muted);font:12px Arial,sans-serif;padding:48px 0 55px}
+@media(max-width:620px){.hero{padding:55px 0 35px}.book{grid-template-columns:110px 1fr;gap:22px;padding:30px 0}.summary{font-size:15px}.cover{padding:10px;font-size:12px}h2{font-size:26px}.button{font-size:12px;padding:9px 12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand">The Reading List</div><div class="issue">Issue No. 01 · October 2026</div></header>
+<section class="hero"><div class="eyebrow">A curated collection</div><h1>Books worth<br>exploring.</h1><p class="intro">A small selection of books, ideas, and perspectives. Each recommendation will include a short introduction and a link to explore the book.</p></section>
+<div class="section-heading">This issue · Preview template</div>
+<main>
+<article class="book"><div class="cover" aria-label="Book cover placeholder">Book cover<br>goes here</div><div><div class="number">01 / Featured book</div><h2>Your first book title</h2><p class="author">Author name</p><p class="summary">Your short review or summary will appear here. Share a book link and a few sentences about why it belongs in this selection, and this card will be replaced with the real details and cover.</p><span class="button">Purchase link coming soon →</span></div></article>
+<article class="book"><div class="cover" aria-label="Book cover placeholder">Book cover<br>goes here</div><div><div class="number">02 / Featured book</div><h2>Your second book title</h2><p class="author">Author name</p><p class="summary">This is a reusable example card. Future editions can feature as many books as you choose, each with a cover, summary, and clickable link to the publisher or bookseller.</p><span class="button">Purchase link coming soon →</span></div></article>
+<article class="book"><div class="cover" aria-label="Book cover placeholder">Book cover<br>goes here</div><div><div class="number">03 / Featured book</div><h2>Your third book title</h2><p class="author">Author name</p><p class="summary">The layout adapts to phones, so readers can browse your selections easily after opening the newsletter from Viber.</p><span class="button">Purchase link coming soon →</span></div></article>
+</main>
+<footer>The Reading List · A selection for curious readers<br>Preview edition — sample content only</footer>
+</div>
+</body>
+</html>

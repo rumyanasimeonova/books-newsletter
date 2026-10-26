@@ -110,7 +110,7 @@
   {
     "number": 19,
     "title": "Какво иска жената",
-    "status": "unavailable: 403 Client Error: Forbidden for url: https://cpss.cloudcart.net/product/kakvo-iska-jenata",
+    "status": "downloaded via fallback",
     "source": "https://cpss.cloudcart.net/product/kakvo-iska-jenata"
   },
   {
@@ -122,7 +122,7 @@
   {
     "number": 28,
     "title": "Пробитите граници — в терапията на граничността и бордерлайн",
-    "status": "unavailable: 403 Client Error: Forbidden for url: https://www.ciela.com/probitite-granitsi-v-terapiyata",
+    "status": "downloaded via fallback",
     "source": "https://www.ciela.com/probitite-granitsi-v-terapiyata-na-granichnostta-i-borderlayn.html"
   },
   {
@@ -170,7 +170,7 @@
   {
     "number": 29,
     "title": "Ида",
-    "status": "downloaded",
+    "status": "existing",
     "source": "https://kx-publishing.org/shop/%D0%B8%D0%B4%D0%B0/"
   }
 ]

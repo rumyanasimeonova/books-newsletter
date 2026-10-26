@@ -1,0 +1,27 @@
+name: Import book cover images
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/import_covers.py'
+permissions:
+  contents: write
+jobs:
+  covers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests beautifulsoup4 pillow
+      - run: python scripts/import_covers.py
+      - name: Commit retrieved covers and updated newsletter
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html images cover-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Embed downloaded book covers"
+            git push
+          fi

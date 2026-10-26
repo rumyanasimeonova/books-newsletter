@@ -92,7 +92,7 @@
   {
     "number": 16,
     "title": "Техники на психоанализата",
-    "status": "downloaded via fallback",
+    "status": "existing",
     "source": "https://kx-publishing.org/shop/%d1%82%d0%b5%d1%85%d0%bd%d0%b8%d0%ba%d0%b8-%d0%bd%d0%b0-%d0%bf%d1%81%d0%b8%d1%85%d0%be%d0%b0%d0%bd%d0%b0%d0%bb%d0%b8%d0%b7%d0%b0%d1%82%d0%b0/"
   },
   {
@@ -114,6 +114,18 @@
     "source": "https://cpss.cloudcart.net/product/kakvo-iska-jenata"
   },
   {
+    "number": 27,
+    "title": "Психотерапия на алкохолизма — трето, преработено и допълнено издание",
+    "status": "unavailable: 403 Client Error: Forbidden for url: https://www.ciela.com/psihoterapija-na-alkoholizma-tr",
+    "source": "https://www.ciela.com/psihoterapija-na-alkoholizma-treto-preraboteno-i-dop-lneno-izdanie.html"
+  },
+  {
+    "number": 28,
+    "title": "Пробитите граници — в терапията на граничността и бордерлайн",
+    "status": "unavailable: 403 Client Error: Forbidden for url: https://www.ciela.com/probitite-granitsi-v-terapiyata",
+    "source": "https://www.ciela.com/probitite-granitsi-v-terapiyata-na-granichnostta-i-borderlayn.html"
+  },
+  {
     "number": 20,
     "title": "Произход и развитие на съзнанието",
     "status": "existing",
@@ -122,13 +134,13 @@
   {
     "number": 21,
     "title": "Последните лекции (1958)",
-    "status": "downloaded via fallback",
+    "status": "existing",
     "source": "https://www.legeartis-bg.net/id/poslednite-lekcii-1958/"
   },
   {
     "number": 22,
     "title": "Бременната девица",
-    "status": "downloaded via fallback",
+    "status": "existing",
     "source": "https://www.legeartis-bg.net/id/bremennata-devica/"
   },
   {
@@ -152,7 +164,7 @@
   {
     "number": 26,
     "title": "Анти-Едип",
-    "status": "downloaded via fallback",
+    "status": "existing",
     "source": "https://kx-publishing.org/shop/%d0%b0%d0%bd%d1%82%d0%b8-%d0%b5%d0%b4%d0%b8%d0%bf/"
   }
 ]

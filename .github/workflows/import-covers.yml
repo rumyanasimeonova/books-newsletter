@@ -1,6 +1,8 @@
 name: Import book cover images
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * *'
   push:
     paths:
       - 'scripts/import_covers.py'

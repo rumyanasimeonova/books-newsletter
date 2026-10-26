@@ -92,7 +92,7 @@
   {
     "number": 16,
     "title": "Техники на психоанализата",
-    "status": "missing",
+    "status": "downloaded via fallback",
     "source": "https://kx-publishing.org/shop/%d1%82%d0%b5%d1%85%d0%bd%d0%b8%d0%ba%d0%b8-%d0%bd%d0%b0-%d0%bf%d1%81%d0%b8%d1%85%d0%be%d0%b0%d0%bd%d0%b0%d0%bb%d0%b8%d0%b7%d0%b0%d1%82%d0%b0/"
   },
   {
@@ -122,13 +122,13 @@
   {
     "number": 21,
     "title": "Последните лекции (1958)",
-    "status": "unavailable: 403 Client Error: Forbidden for url: https://www.legeartis-bg.net/id/poslednite-lekcii-195",
+    "status": "downloaded via fallback",
     "source": "https://www.legeartis-bg.net/id/poslednite-lekcii-1958/"
   },
   {
     "number": 22,
     "title": "Бременната девица",
-    "status": "unavailable: 403 Client Error: Forbidden for url: https://www.legeartis-bg.net/id/bremennata-devica/",
+    "status": "downloaded via fallback",
     "source": "https://www.legeartis-bg.net/id/bremennata-devica/"
   },
   {
@@ -152,7 +152,7 @@
   {
     "number": 26,
     "title": "Анти-Едип",
-    "status": "missing",
+    "status": "downloaded via fallback",
     "source": "https://kx-publishing.org/shop/%d0%b0%d0%bd%d1%82%d0%b8-%d0%b5%d0%b4%d0%b8%d0%bf/"
   }
 ]
